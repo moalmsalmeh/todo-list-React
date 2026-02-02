@@ -24,6 +24,11 @@ function App() {
     newTodos[index].completed= !newTodos[index].completed;
     setTodos(newTodos);
   }
+  const handleDeleteItem =(index)=>{
+    const newTodos= [...todos];
+    newTodos.splice(index ,1);
+    setTodos(newTodos);
+  }
 
   return (
     <div className="App">
@@ -32,8 +37,17 @@ function App() {
       <div className='to-do-container'>
         <ul>
         {todos.map((item, index) =>{
-          return <li className={item.completed ? "done" : ""} key={index} onClick={() => handleItemDone(index)}>{item.text}</li>
-        })}
+          return(
+          <div className='item'>
+            <li className={item.completed ? "done" : ""}
+             key={index} 
+             onClick={() => handleItemDone(index)}
+            >
+             {item.text}
+            </li>
+            <span onClick={() =>handleDeleteItem(index)} className='trash'>❌</span>
+          </div>
+        )})}
       </ul>
       <input ref={inputRef} placeholder='Enter Item..'/>
       <button onClick={handleAdTodo}>Add</button>
