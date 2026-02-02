@@ -43,6 +43,6 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone <repository-url>
-cd todo-list
+cd todo-list-React
 npm install
 npm run start
